@@ -34,10 +34,11 @@ jobs:
         curl -o socat-1.8.0.0.tar.gz http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
         tar -xvzf socat-1.8.0.0.tar.gz
 
-    - name: Get Cygwin path
-      id: cygwin-path
-      run: echo "CYGWIN_PATH=$(C:\tools\cygwin\bin\cygpath -u ${{ github.workspace }})" >> $GITHUB_ENV
-      shell: cmd
+    - name: Set CYGWIN_PATH (PowerShell)
+      run: |
+        $cygwinPath = & C:\tools\cygwin\bin\cygpath -u "${{ github.workspace }}"
+        echo "CYGWIN_PATH=$cygwinPath" | Out-File -Append -Encoding ASCII $env:GITHUB_ENV
+      shell: pwsh
 
     - name: Execute Build Script in Cygwin
       run: |
