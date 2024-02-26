@@ -43,8 +43,7 @@ jobs:
     - name: Execute Build Script in Cygwin
       run: |
         echo "CYGWIN_PATH: $CYGWIN_PATH"
-        C:\tools\cygwin\bin\bash -lc "cd $CYGWIN_PATH && pwd && ls -la && ./build-script.sh"
-
+        C:\tools\cygwin\bin\bash -lc "chmod +x $CYGWIN_PATH/build-script.sh && $CYGWIN_PATH/build-script.sh"
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
