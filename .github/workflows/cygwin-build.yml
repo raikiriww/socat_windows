@@ -36,6 +36,8 @@ jobs:
 
     - name: Build with Cygwin
       run: |
+        cygwin
+        cygwin_path=$(cygpath -w $PWD/source)
         cygwin_path=$(cygpath -w $PWD/socat-1.8.0.0)
         cygwin_commands="/bin/bash --login -c 'cd \"$cygwin_path\" && ./configure && make && make install'"
         C:\tools\cygwin\bin\bash -c "$cygwin_commands"
