@@ -1,0 +1,47 @@
+name: Cygwin Build
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install Cygwin
+      run: |
+        choco install cygwin
+        choco install cyg-get
+        cyg-get cyg-get gcc-g++ gcc-core make gcc-fortran gcc-objc gcc-objc++ libkrb5-devel libkrb5_3 libreadline-devel libssl-devel libwrap-devel tcp_wrappers
+
+    - name: Configure Environment
+      run: |
+        echo "C:\tools\cygwin\bin" >> $GITHUB_PATH
+
+    - name: download socat
+      run: |
+        curl -o socat-1.8.0.0.tar.gz http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
+        tar -xvzf socat-1.8.0.0.tar.gz
+
+    - name: Build with Cygwin
+      run: |
+        cygwin_path=$(cygpath -w $PWD/socat-1.8.0.0)
+        cygwin_commands="/bin/bash --login -c 'cd \"$cygwin_path\" && ./configure && make && make install'"
+        C:\tools\cygwin\bin\bash -c "$cygwin_commands"
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: extracted-socat-1.8.0.0
+        path: socat-1.8.0.0/
