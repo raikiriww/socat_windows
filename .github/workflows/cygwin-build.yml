@@ -34,13 +34,14 @@ jobs:
         curl -o socat-1.8.0.0.tar.gz http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
         tar -xvzf socat-1.8.0.0.tar.gz
 
-    - name: Build with Cygwin
+    - name: Get Cygwin path
+      id: cygwin-path
+      run: echo "CYGWIN_PATH=$(C:\tools\cygwin\bin\cygpath -u ${{ github.workspace }})" >> $GITHUB_ENV
+      shell: cmd
+
+    - name: Execute Build Script in Cygwin
       run: |
-        cygwin
-        cygwin_path=$(cygpath -w $PWD/source)
-        cygwin_path=$(cygpath -w $PWD/socat-1.8.0.0)
-        cygwin_commands="/bin/bash --login -c 'cd \"$cygwin_path\" && ./configure && make && make install'"
-        C:\tools\cygwin\bin\bash -c "$cygwin_commands"
+        C:\tools\cygwin\bin\bash -lc "cd $CYGWIN_PATH && ./build-script.sh"
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
