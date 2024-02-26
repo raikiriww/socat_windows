@@ -29,21 +29,9 @@ jobs:
       run: |
         echo "C:\tools\cygwin\bin" >> $GITHUB_PATH
 
-    - name: download socat
-      run: |
-        curl -o socat-1.8.0.0.tar.gz http://www.dest-unreach.org/socat/download/socat-1.8.0.0.tar.gz
-        tar -xvzf socat-1.8.0.0.tar.gz
-
-    - name: Set CYGWIN_PATH (PowerShell)
-      run: |
-        $cygwinPath = & C:\tools\cygwin\bin\cygpath -u "${{ github.workspace }}"
-        echo "CYGWIN_PATH=$cygwinPath" | Out-File -Append -Encoding ASCII $env:GITHUB_ENV
-      shell: pwsh
-
     - name: Execute Build Script in Cygwin
       run: |
-        echo "CYGWIN_PATH: $CYGWIN_PATH"
-        C:\tools\cygwin\bin\bash -lc "chmod +x $CYGWIN_PATH/build-script.sh && $CYGWIN_PATH/build-script.sh"
+        C:\tools\cygwin\bin\bash -lc "cd /cygdrive/d/a/socat_windows/socat_windows && chmod +x ./build-script.sh && ./build-script.sh"
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
