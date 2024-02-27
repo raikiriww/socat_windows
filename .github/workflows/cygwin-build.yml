@@ -54,7 +54,7 @@ jobs:
         path: socat-1.8.0.0/
 
     - name: Archive production artifacts
-        run: 7z a socat-1.8.0.0.zip D:\a\socat_windows\socat_windows\socat-1.8.0.0
+      run: 7z a socat-1.8.0.0.zip D:\a\socat_windows\socat_windows\socat-1.8.0.0
 
     - name: Create Release
       id: create_release
