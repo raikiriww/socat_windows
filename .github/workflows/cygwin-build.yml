@@ -44,6 +44,9 @@ jobs:
         Copy-Item "C:\tools\cygwin\bin\cygwin1.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
         Copy-Item "C:\tools\cygwin\bin\cygssl-3.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
         Copy-Item "C:\tools\cygwin\bin\cygreadline7.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygwrap-0.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygncursesw-10.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygz.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
       shell: pwsh
 
     - name: Upload Artifacts
