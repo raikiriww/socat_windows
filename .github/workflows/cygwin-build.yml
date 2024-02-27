@@ -37,6 +37,14 @@ jobs:
     - name: Execute Build Script in Cygwin
       run: |
         C:\tools\cygwin\bin\bash -lc "cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0 && ./configure && make && make install"
+        
+    - name: Copy Cygwin DLLs
+      run: |
+        Copy-Item "C:\tools\cygwin\bin\cygcrypto-3.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygwin1.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygssl-3.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+        Copy-Item "C:\tools\cygwin\bin\cygreadline7.dll" -Destination "D:\a\socat_windows\socat_windows\socat-1.8.0.0"
+      shell: pwsh
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
