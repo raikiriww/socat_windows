@@ -36,7 +36,12 @@ jobs:
 
     - name: Execute Build Script in Cygwin
       run: |
-        C:\tools\cygwin\bin\bash -lc "cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0 && ./configure && make && make install"
+        # C:\tools\cygwin\bin\bash -lc "cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0 && ./configure && make && make install"
+        cygwin
+        cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0
+        ./configure
+        make
+        make install
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
