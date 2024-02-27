@@ -47,5 +47,5 @@ We welcome contributions of all kinds, including feature suggestions, bug fixes,
 
 ## Contact
 
-For any questions or suggestions, please open an issue on the [Issues page](https://github.com/<YourUsername>/<YourProjectName>/issues).
+For any questions or suggestions, please open an issue on the [Issues page](https://github.com/raikiriww/socat_windows/issues).
 
