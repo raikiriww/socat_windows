@@ -38,7 +38,7 @@ jobs:
       run: |
         # C:\tools\cygwin\bin\bash -lc "cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0 && ./configure && make && make install"
         cygwin
-        cd /cygdrive/d/a/socat_windows/socat_windows/socat-1.8.0.0
+        cd /a/socat_windows/socat_windows/socat-1.8.0.0
         ./configure
         make
         make install
