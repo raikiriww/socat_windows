@@ -23,7 +23,7 @@ jobs:
       run: |
         choco install cygwin
         choco install cyg-get
-        cyg-get cyg-get gcc-g++ gcc-core make gcc-fortran gcc-objc gcc-objc++ libkrb5-devel libkrb5_3 libreadline-devel libssl-devel libwrap-devel tcp_wrappers
+        cyg-get gcc-g++ gcc-core cygwin32-gcc-g++ cygwin32-gcc-core make gcc-fortran gcc-objc gcc-objc++ libkrb5-devel libkrb5_3 libreadline-devel libssl-devel libwrap-devel tcp_wrappers 
 
     - name: Configure Environment
       run: |
